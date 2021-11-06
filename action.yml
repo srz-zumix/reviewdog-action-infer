@@ -3,7 +3,6 @@ description: '🐶 Check infer report with reviewdog on pull requests to enforce
 author: 'srz-zumix'
 
 inputs:
-inputs:
   github_token:
     description: 'GITHUB_TOKEN'
     default: '${{ github.token }}'
