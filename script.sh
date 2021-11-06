@@ -17,8 +17,8 @@ echo '::group:: Checking infer report with reviewdog 🐶 ...'
 reviewdog \
     -efm="%E%f:%l: %trror: %m" \
     -efm="%E%f:%l: %tarning: %m" \
+    -efm="%Z%.%#%n.%.%#" \
     -efm="%C%m" \
-    -efm="%Z\\ \\ %n.\\ %.%#" \
     -efm="%-G%.%#" \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
