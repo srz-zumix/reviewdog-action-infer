@@ -5,7 +5,7 @@
 @end
 
 @implementation Test
-NSString test() {
+NSString* test() {
     Test* x = nil;
     return x->_s;
 }
