@@ -24,7 +24,7 @@ jobs:
       - uses: srz-zumix/setup-infer@v1
       - name: infer
         run: |
-          infer -- clang -c example/cpp/test.cpp
+          infer -- clang -c example/objc/test.m
       - uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
