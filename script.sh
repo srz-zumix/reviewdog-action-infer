@@ -18,6 +18,7 @@ reviewdog \
     -efm="%E%f:%l: %trror: %m" \
     -efm="%E%f:%l: %tarning: %m" \
     -efm="%C%m" \
+    -efm="%Z\\ \\ %n.\\ %.%#" \
     -efm="%-G%.%#" \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
