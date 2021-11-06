@@ -37,7 +37,7 @@ jobs:
       - uses: srz-zumix/setup-infer@v1
       - name: infer
         run: |
-          infer -- javac -c examples/java/test.java
+          infer -- javac examples/java/test.java
       - uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
