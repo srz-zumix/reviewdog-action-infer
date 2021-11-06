@@ -16,7 +16,12 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 cat "${INPUT_REPORT_PATH}/report.txt"
 
 echo '::group:: Checking infer report with reviewdog 🐶 ...'
-reviewdog -efm="%E%f:%l: %trror: %m" -efm="%E%f:%l: %tarning: %m" -efm="%C\ \ %n.\ %.%#" -efm="%C%m" -efm="%-G%.%#" \
+reviewdog \
+    -efm="%E%f:%l: %trror: %m" \
+    -efm="%E%f:%l: %tarning: %m" \
+    -efm="%C\\ \\ %n.\\ %.%#" \
+    -efm="%C%m" \
+    -efm="%-G%.%#" \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
