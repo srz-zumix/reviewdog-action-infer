@@ -16,3 +16,16 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
+
+  objc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: srz-zumix/setup-infer@v1
+      - name: infer
+        run: |
+          infer -- clang -c example/cpp/test.cpp
+      - uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
