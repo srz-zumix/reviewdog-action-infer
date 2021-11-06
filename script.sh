@@ -13,6 +13,8 @@ echo '::endgroup::'
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+cat "${INPUT_REPORT_PATH}/report.txt"
+
 echo '::group:: Checking infer report with reviewdog 🐶 ...'
 reviewdog -efm="%E%f:%l: %trror: %m,%E%f:%l: %tarning: %m,%C\ \ %n.\ %.%#,%C%m,%-G%.%#" \
     -name="${INPUT_TOOL_NAME}" \
