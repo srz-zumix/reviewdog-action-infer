@@ -1,0 +1,60 @@
+name: 'Run cpplint with reviewdog'
+description: '🐶 Check infer report with reviewdog on pull requests to enforce best practices'
+author: 'srz-zumix'
+
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN'
+    default: '${{ github.token }}'
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'infer'
+  report_path:
+    description: |
+      Infer report directory path.
+      Default is ./infer-out
+    default: './infer-out'
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+  reporter:
+    description: |
+      Reporter of reviewdog command [github-pr-check,github-pr-review].
+      Default is github-pr-check.
+    default: 'github-pr-check'
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    default: 'added'
+  fail_on_error:
+    description: |
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
+    default: 'false'
+  reviewdog_flags:
+    description: 'Additional reviewdog flags'
+    default: ''
+# runs:
+#   using: 'docker'
+#   image: 'Dockerfile'
+runs:
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/script.sh
+      shell: sh
+      env:
+        REVIEWDOG_VERSION: v0.13.0
+        # INPUT_<VARIABLE_NAME> is not available in Composite run steps
+        # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_REPORT_PATH: ${{ inputs.report_path }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}        
+branding:
+  icon: 'book'
+  color: 'blue'
