@@ -1,4 +1,4 @@
-# action-infer
+# reviewdog-action-infer
 
 This action checks the report of [Infer][] with [reviewdog][]
 
@@ -66,7 +66,7 @@ jobs:
         run: |
             infer -- make
       - name: Check Infer report
-        uses: srz-zumix/action-infer@v1
+        uses: srz-zumix/reviewdog-action-infer@v1
         with:
           reporter: github-pr-review # Default is github-pr-check
 ```
