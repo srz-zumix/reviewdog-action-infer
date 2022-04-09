@@ -1,4 +1,4 @@
-name: 'Run cpplint with reviewdog'
+name: 'Check infer with reviewdog'
 description: '🐶 Check infer report with reviewdog on pull requests to enforce best practices'
 author: 'srz-zumix'
 
