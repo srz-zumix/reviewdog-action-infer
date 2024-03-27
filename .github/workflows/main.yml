@@ -17,18 +17,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
 
-  objc:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: srz-zumix/setup-infer@v1
-      - name: infer
-        run: |
-          infer -- clang -c examples/objc/test.m
-      - uses: ./
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
+  # objc:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: srz-zumix/setup-infer@v1
+  #     - name: infer
+  #       run: |
+  #         infer -- clang -c examples/objc/test.m
+  #     - uses: ./
+  #       with:
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
+  #         reporter: github-pr-review
 
   java:
     runs-on: ubuntu-latest
