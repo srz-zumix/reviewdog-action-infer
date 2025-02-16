@@ -52,14 +52,15 @@ Optional. Additional reviewdog flags.
 
 ```yml
 name: reviewdog
-on: [pull_request]
+on:
+  pull_request:
 jobs:
   infer:
     name: runner / infer
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
       - name: Setup Infer
         uses: srz-zumix/setup-infer@v1
       - name: Infer
