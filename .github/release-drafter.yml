@@ -39,6 +39,7 @@ version-resolver:
       - 'feature'
       - 'enhancement'
       - 'minor'
+      - 'bump:minor'
   patch:
     labels:
       - 'improvement'
