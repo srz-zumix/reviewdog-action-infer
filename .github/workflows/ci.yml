@@ -1,44 +1,57 @@
-name: GitHub Actions - test
+name: Test
 on:
   pull_request:
 
-jobs:
+permissions: {}
 
+jobs:
   cpp:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: srz-zumix/setup-infer@530856effeae228d1f3c8251c91ea8348d9480ee # v1.1.1
       - name: infer
         run: |
           infer -- g++ -c examples/cpp/test.cpp
       - uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
 
   # objc:
   #   runs-on: macos-latest
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
   #   steps:
   #     - uses: actions/checkout@v6
+  #       with:
+  #         persist-credentials: false
   #     - uses: srz-zumix/setup-infer@v1
   #     - name: infer
   #       run: |
   #         infer -- clang -c examples/objc/test.m
   #     - uses: ./
   #       with:
-  #         github_token: ${{ secrets.GITHUB_TOKEN }}
   #         reporter: github-pr-review
 
   java:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: srz-zumix/setup-infer@530856effeae228d1f3c8251c91ea8348d9480ee # v1.1.1
       - name: infer
         run: |
           infer -- javac examples/java/test.java
       - uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
