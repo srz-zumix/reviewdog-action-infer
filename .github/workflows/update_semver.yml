@@ -9,8 +9,11 @@ on:
     types: [published]
   workflow_dispatch:
     inputs:
+      # checkov:skip=CKV_GHA_7: Input required for manual trigger
       tag:
         type: string
+        default: ''
+        required: false
   workflow_call:
     inputs:
       tag:
@@ -25,6 +28,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ inputs.tag || '' }}
+
       - uses: haya14busa/action-update-semver@7d2c558640ea49e798d46539536190aff8c18715 # v1.5.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
