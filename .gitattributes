@@ -1,0 +1,5 @@
+# export settings
+examples/** export-ignore
+.github/** export-ignore
+*.yaml export-ignore
+zizmor.yml export-ignore
